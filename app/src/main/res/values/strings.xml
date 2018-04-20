@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Database_tutorial</string>
+    <string name="textView_createNewList">List name</string>
+    <string name="btn_createNewList">Create list</string>
+    <string name="editText_newListName" />
+    <string name="hint_newListName">Enter a List name</string>
+    <string name="btn_showLists">Show lists</string>
+    <string name="editText_ListName" />
+    <string name="btn_editListName">Edit list name</string>
+    <string name="bt_deleteList">Delete list</string>
+    <string name="textView_listName" />
+    <string name="textView_listNameTitle">List name:</string>
+    <string name="menu_action_setting">Setting</string>
+    <string name="menu_action_about_us">About us</string>
+    <string name="btn_showList">Show list</string>
+</resources>
