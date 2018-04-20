@@ -13,4 +13,8 @@
     <string name="menu_action_setting">Setting</string>
     <string name="menu_action_about_us">About us</string>
     <string name="btn_showList">Show list</string>
+    <string name="textView_addNewItem">New item</string>
+    <string name="editText_addNewItemName" />
+    <string name="hint_addNewItemName">Please  enter new item</string>
+    <string name="btn_addNewItem">Add</string>
 </resources>
