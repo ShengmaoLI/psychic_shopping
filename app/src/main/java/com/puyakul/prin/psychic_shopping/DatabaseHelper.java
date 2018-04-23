@@ -27,20 +27,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addLists(String name){
+        //Open database
         SQLiteDatabase db = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         db.insert("lists", null, contentValues);
+        //Close database
         db.close();
         return true;
     }
 
     public boolean addListsItem(String name, int id){
+        //Open database
         SQLiteDatabase db = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("id", id);
         db.insert("items", null, contentValues);
+        //Close database
         db.close();
         return true;
     }
@@ -62,9 +66,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery(sql, null);
     }
 
-    public Cursor getListDetail(int id){
+    public Cursor getListDetail(){
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT items.name FROM items INNER JOIN lists ON lists.id=items.list_id WHERE items.list_id = '" + id + "'";
+        String sql = "SELECT item.name FROM items";
+        //String sql = "SELECT items.name FROM items INNER JOIN lists ON lists.id=items.list_id WHERE items.list_id = '" + id + "'";
         return  db.rawQuery(sql,null);
     }
 
