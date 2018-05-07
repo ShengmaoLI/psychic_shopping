@@ -42,33 +42,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
-        contentValues.put("id", id);
+        contentValues.put("list_id", id);
         db.insert("items", null, contentValues);
         //Close database
         db.close();
         return true;
     }
 
+    public  int deleteItem (String id){
+        SQLiteDatabase db= getReadableDatabase();
+        return db.delete("item", "ID = ?", new String[] {id});
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String sqlLists = "DROP TABLE IF EXISTS lists";
         String sqlItems = "DROP TABLE IF EXISTS items";
-
         db.execSQL(sqlLists);
         db.execSQL(sqlItems);
-
         onCreate(db);
     }
 
     public Cursor getList(){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "SELECT * FROM lists";
+        //Change the return type. Not necessary
         return db.rawQuery(sql, null);
     }
 
-    public Cursor getListDetail(){
+    public Cursor getListDetail(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT item.name FROM items";
+        String sql = "SELECT items.name FROM items WHERE items.list_id = '" + id + "'";
         //String sql = "SELECT items.name FROM items INNER JOIN lists ON lists.id=items.list_id WHERE items.list_id = '" + id + "'";
         return  db.rawQuery(sql,null);
     }
@@ -78,4 +82,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sql = "SELECT ID FROM lists WHERE name = '" + name + "'";
         return db.rawQuery(sql, null);
     }
+
+
 }

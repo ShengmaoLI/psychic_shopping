@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    tools:context=".itemDetailList">
+
+    <ImageView
+        android:id="@+id/img_thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:adjustViewBounds="false"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textView_listItemText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/img_thumbnail"
+        android:layout_marginStart="112dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btn_listItemRemove"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_thumbnail"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:text="Remove" />
+    android:layout_alignParentStart = "true"/>
+</RelativeLayout>
