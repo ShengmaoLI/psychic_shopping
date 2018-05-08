@@ -25,7 +25,14 @@ public class MainListView extends AppCompatActivity {
 
 
     //private DatabaseHelper db;
-
+    /*
+    * Author: Simon
+    * 1:) Try to initialize DatabaseHelper 
+    * 2:) then you can use getList() method to get data.
+    * 3:) if you use the reture type is cursor in your getList() method, you have to handle this cursor.
+    * 4:) when you handle the cursor, put the data that you get from the cursor into your list.
+    * 5:) Once you complete the above steps, it should work.
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
