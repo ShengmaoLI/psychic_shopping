@@ -27,5 +27,7 @@ public class ShoppingListItemTable {
         db.insert(TABLE_NAME, null, contentValues);
     }
 
+
+
 }
 

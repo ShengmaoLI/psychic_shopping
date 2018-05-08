@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,14 +34,11 @@ public class MainListView extends AppCompatActivity {
         ListView_mainListView = findViewById(R.id.ListView_mainListView);
         adapter = new ShoppingListAdapter(this, android.R.layout.simple_list_item_1, list);
         ListView_mainListView.setAdapter(adapter);
-        getLists();
+        Log.d("MainActivity", "List Adapter " + adapter);
+        //getLists();
     }
 
     public void getLists(){
-
-
-
-
 //        //get the data and append to a List..
 //        Cursor cursor = db.getList();
 //        ArrayList<String> listsData = new ArrayList<>();

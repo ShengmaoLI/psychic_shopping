@@ -60,4 +60,11 @@ public class ShoppingListTable {
         return results;
     }
 
+    public Cursor getList(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM lists";
+        //Change the return type. Not necessary
+        return db.rawQuery(sql, null);
+    }
+
 }
