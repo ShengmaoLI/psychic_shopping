@@ -1,9 +1,11 @@
 package com.puyakul.prin.psychic_shopping;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,9 +15,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseHelper db;
+    private ShoppingListItemTable db;
     private Button btn_createNewList, btn_showLists;
     private EditText editText_newListName;
     private Toolbar top_toolBar;
@@ -24,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        db = new DatabaseHelper(this);
 
         editText_newListName = findViewById(R.id.editText_newListName);
 
@@ -55,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
     //Create menu bar on top
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,24 +80,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void createNewList(){
+        ShoppingListDatabase databaseConnection = new ShoppingListDatabase(this);
+        final SQLiteDatabase db = databaseConnection.open();
+        ShoppingList shoppingList = new ShoppingList();
 
-       String listName =  editText_newListName.getText().toString().trim();
+        String listName = editText_newListName.getText().toString().trim();
 
-       //Check is the editText is empty
+        //Check is the editText is empty
         if(TextUtils.isEmpty(listName)){
-            Toast.makeText(this, "Please enter a List name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter a List name", Toast.LENGTH_SHORT).show();
             return;
         }
-
-       //Check if the editText is filled Return true
-        if (db.addLists(listName)){
-            Toast.makeText(this, "New list created", Toast.LENGTH_LONG).show();
+        //Else if editText is not empty insert value into database
+        else {
+            shoppingList.setName(listName);
+            ShoppingListTable.insert(db, shoppingList);
+            Toast.makeText(this, "New list created", Toast.LENGTH_SHORT).show();
+            ArrayList<ShoppingList> list = ShoppingListTable.selectAll(db);
+            Log.d("MainActivity", "onCreate: " + list);
         }
-       //Return false
-        else{
-            Toast.makeText(this, "Error, no list created", Toast.LENGTH_LONG).show();
-        }
-
-
     }
 }

@@ -89,6 +89,14 @@ public class MainListsDetail extends AppCompatActivity {
     public void addItem(){
 
         String newItemName = editText_addNewItemName.getText().toString().trim();
+
+
+        //Getter Setter
+        ShoppingItem s = new ShoppingItem();
+        s.setID(1);
+        s.setCatagory("aaa");
+
+
         if(TextUtils.isEmpty(newItemName)){
             Toast.makeText(this, "Please enter a new item", Toast.LENGTH_SHORT).show();
             // ****Must have return to make it work****
